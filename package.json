@@ -1,0 +1,20 @@
+{
+  "name": "project-ai",
+  "version": "1.0.0",
+  "workspaces": [
+    "output"
+  ],
+  "scripts": {
+    "start": "npm run start:dev -w output",
+    "start:prod": "npm run start:prod -w output",
+    "build": "node --watch-path ./src --watch-path ./node_modules/@january/canary --watch ./node_modules/@january/canary generate"
+  },
+  "dependencies": {
+    "@january/declarative": "https://github.com/JanuaryLabs/dist/raw/main/declarative.tar.gz",
+    "@january/extensions": "https://github.com/JanuaryLabs/dist/raw/main/extensions.tar.gz",
+    "@january/canary": "https://github.com/JanuaryLabs/dist/raw/main/canary.tar.gz",
+    "octokit": "^4.0.2",
+    "openai": "^4.61.1",
+    "prettier": "^3.3.3"
+  }
+}

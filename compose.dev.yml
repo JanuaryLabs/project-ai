@@ -1,0 +1,53 @@
+services:
+  database:
+    image: 'postgres:16'
+    ports:
+      - '5432:5432'
+    volumes:
+      - 'postgres_data:/var/lib/postgresql/data'
+    networks:
+      - 'development'
+    restart: 'unless-stopped'
+    environment:
+      POSTGRES_PASSWORD: 'yourpassword'
+      POSTGRES_USER: 'youruser'
+      POSTGRES_DB: 'yourdatabase'
+  pgadmin:
+    image: 'dpage/pgadmin4'
+    restart: 'unless-stopped'
+    ports:
+      - '8080:8080'
+    networks:
+      - 'development'
+    environment:
+      PGADMIN_DEFAULT_EMAIL: 'admin@admin.com'
+      PGADMIN_DEFAULT_PASSWORD: 'password'
+  api:
+    image: 'node:lts'
+    build:
+      context: '.'
+      dockerfile: 'Dockerfile'
+    networks:
+      - 'development'
+    restart: 'unless-stopped'
+    command: 'node --watch /app/build/server.js'
+    develop:
+      watch:
+        - action: 'sync'
+          path: './output/build/server.js'
+          target: '/app/build/server.js'
+          ignore:
+            - 'node_modules/'
+        - action: 'rebuild'
+          path: './output/package.json'
+    env_file:
+      - '.env'
+    ports:
+      - '3000:3000'
+      - '9229:9229'
+    depends_on:
+      - 'database'
+volumes:
+  postgres_data: {}
+networks:
+  development: {}
