@@ -2,6 +2,7 @@
   "extends": "./output/tsconfig.json",
   "include": ["src/**/*.ts"],
   "exclude": ["vite.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],
+  "files": ["./env.d.ts"],
   "compilerOptions": {
     "rootDir": ".",
     "moduleResolution": "Bundler",
