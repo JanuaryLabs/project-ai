@@ -9,7 +9,7 @@ export async function toActionableFiles(
   repoName: string,
   files: components['schemas']['diff-entry'][],
 ) {
-  const actionableFiles: (AddFile | UpsertFile | DeleteFile)[] = [];
+  const actionableFiles: Omit<AddFile | UpsertFile | DeleteFile, 'id'>[] = [];
   for (const file of files) {
     if (file.status === 'removed' || file.status === 'renamed') {
       actionableFiles.push({
@@ -30,7 +30,6 @@ export async function toActionableFiles(
     } else {
       actionableFiles.push({
         action: file.status === 'added' ? 'add' : 'upsert',
-        content: data.content,
         filename: file.filename,
         path: file.filename,
       });

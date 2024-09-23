@@ -12,10 +12,11 @@
   "dependencies": {
     "@january/canary": "https://github.com/JanuaryLabs/dist/raw/main/0.9.0/canary.tar.gz",
     "@january/declarative": "https://github.com/JanuaryLabs/dist/raw/main/0.9.0/declarative.tar.gz",
+    "@january/docker": "https://github.com/JanuaryLabs/dist/raw/main/0.9.0/docker.tar.gz",
     "@january/extensions": "https://github.com/JanuaryLabs/dist/raw/main/0.9.0/extensions.tar.gz",
+    "@octokit/core": "^6.1.2",
     "octokit": "^4.0.2",
     "openai": "^4.61.1",
-    "prettier": "^3.3.3",
-    "@january/docker": "https://github.com/JanuaryLabs/dist/raw/main/0.9.0/docker.tar.gz"
+    "prettier": "^3.3.3"
   }
 }
